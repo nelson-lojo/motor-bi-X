@@ -1,3 +1,4 @@
+Variable Name,Description
 Order No,Unique number identifying the order
 User Id,Unique number identifying the customer on a platform
 Vehicle Type,"For this competition limited to bikes, however in practice Sendy service extends to trucks and vans"

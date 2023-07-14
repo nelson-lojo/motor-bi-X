@@ -1,7 +1,7 @@
 {
   "image": "mcr.microsoft.com/devcontainers/miniconda:0-3",
   
-  "postCreateCommand": "conda init && conda install -n base --file requirements.txt -y",
+  "postCreateCommand": "conda init && conda install -n base -c conda-forge --file requirements.txt -y",
   
 	// "forwardPorts": []
     

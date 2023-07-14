@@ -21,17 +21,16 @@ Arrival at Destination - Weekday (Mo = 1),Arrival at Delivery - Weekday (Monday 
 Arrival at Destination - Time,Arrival at Delivery Time - Time of day the rider arrived at the destination to deliver the order - as marked by the rider through the Sendy application
 Distance (KM),The distance from Pickup to Destination
 Temperature,Temperature at the time of order placement in Degrees Celsius (measured every three hours)
-Precipitation in millimeters, Precipitation at the time of order placement (measured every three hours)
+Precipitation in millimeters,Precipitation at the time of order placement (measured every three hours)
 Pickup Lat,Latitude of pick up location
 Pickup Long,Longitude of pick up location
 Destination Lat,Latitude of delivery location
 Destination Long,Longitude of delivery location
-Rider Id, ID of the Rider who accepted the order
+Rider Id,ID of the Rider who accepted the order
 Time from Pickup to Arrival,Time in seconds between 'Pickup' and 'Arrival at Destination' - calculated from the columns for the purpose of facilitating the task
-,
 Rider Metrics,
 Rider Id,Unique number identifying the rider (same as in order details)
-No_Of_Orders, Number of Orders the rider has delivered
+No_Of_Orders,Number of Orders the rider has delivered
 Age,Number of days since the rider delivered the first order
 Average_Rating,Average rating of the rider
-No_of_Ratings, Number of ratings the rider has received. Rating an order is optional for the customer.
+No_of_Ratings,Number of ratings the rider has received. Rating an order is optional for the customer.

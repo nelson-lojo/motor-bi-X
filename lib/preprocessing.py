@@ -25,6 +25,7 @@ def save_data(df: pd.DataFrame,
     
     if sql_db is not None:
         with sql3.connect(sql_db) as conn:
+            conn.execute("DROP TABLE data;")
             df.to_sql("data", conn)
     else:
         df.to_csv(csv_file)

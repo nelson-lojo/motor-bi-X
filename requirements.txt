@@ -3,4 +3,5 @@ seaborn
 pandas
 numpy
 matplotlib
+missingno
 

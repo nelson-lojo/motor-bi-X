@@ -42,6 +42,11 @@ def impute_temperature(df: pd.DataFrame) -> pd.DataFrame:
         `Destination Long`, `Destination Lat`
         `Distance (KM)`, `Time from Pickup to Arrival`.
     """
+
+    def get_minute_from_dt_series(series: pd.Series) -> pd.Series:
+        return pd.to_datetime(series).dt.hour * 60 + pd.to_datetime(series).dt.minute
+    
+    df["Placement - Time"] = get_minute_from_dt_series(df["Placement - Time"])
     temp_control = df[[
         "Placement - Day of Month", 
         "Placement - Weekday (Mo = 1)", 
@@ -54,11 +59,6 @@ def impute_temperature(df: pd.DataFrame) -> pd.DataFrame:
         "Time from Pickup to Arrival",
         "Temperature"
     ]]
-
-    def get_minute_from_dt_series(series: pd.Series) -> pd.Series:
-        return pd.to_datetime(series).dt.hour * 60 + pd.to_datetime(series).dt.minute
-
-    temp_control["Placement - Time"] = get_minute_from_dt_series(temp_control["Placement - Time"])
 
     imputer = IterativeImputer(random_state=42)
     imputer.fit(temp_control.to_numpy())

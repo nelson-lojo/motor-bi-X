@@ -45,7 +45,7 @@ def impute_temperature(df: pd.DataFrame) -> pd.DataFrame:
 
     def get_minute_from_dt_series(series: pd.Series) -> pd.Series:
         return pd.to_datetime(series).dt.hour * 60 + pd.to_datetime(series).dt.minute
-    
+
     df["Placement - Time"] = get_minute_from_dt_series(df["Placement - Time"])
     temp_control = df[[
         "Placement - Day of Month", 

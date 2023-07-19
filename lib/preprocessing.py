@@ -13,7 +13,7 @@ def load_sample(percentage: float = 0.1,
     df: Optional[pd.DataFrame] = None
     if sql_db is not None:
         with sql3.connect(sql_db) as db:
-            df = pd.read_sql("SELECT * FROM data", db)
+            df = pd.read_sql("SELECT * FROM data", db).drop(columns="index")
     else:
         df = pd.read_csv(csv_file)
 

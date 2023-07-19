@@ -2,6 +2,12 @@ import pandas as pd
 from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer
 
+def get_minute_from_dt_series(series: pd.Series) -> pd.Series:
+        return pd.to_datetime(series).dt.hour * 60 + pd.to_datetime(series).dt.minute
+
+def get_seconds_from_dt_series(series: pd.Series) -> pd.Series:
+        return pd.to_datetime(series).dt.hour * 3600 + pd.to_datetime(series).dt.minute * 60 + pd.to_datetime(series).dt.second
+
 def drops(df: pd.DataFrame) -> pd.DataFrame:
     """Drop `Precipitation in millimeters` due to nullity 
        and `Arrival at Destination - Time` due to redundancy"""
@@ -43,9 +49,6 @@ def impute_temperature(df: pd.DataFrame) -> pd.DataFrame:
         `Distance (KM)`, `Time from Pickup to Arrival`.
     """
 
-    def get_minute_from_dt_series(series: pd.Series) -> pd.Series:
-        return pd.to_datetime(series).dt.hour * 60 + pd.to_datetime(series).dt.minute
-
     other_series = get_minute_from_dt_series(df["Placement - Time"])
     temp_control = pd.concat(
         [
@@ -67,7 +70,7 @@ def impute_temperature(df: pd.DataFrame) -> pd.DataFrame:
 
     imputer = IterativeImputer(random_state=42)
     imputer.fit(temp_control.to_numpy())
-    df['Temperature'] = imputer.transform(temp_control)[:, -1]
+    df['Temperature'] = imputer.transform(temp_control)[:, -2]
     del imputer
 
     return df

@@ -17,7 +17,7 @@ def load_sample(percentage: float = 0.1,
     else:
         df = pd.read_csv(csv_file)
 
-    return df.sample(frac=percentage, axis=0).reset_index(drop=True)
+    return df.sample(frac=percentage, axis=0, random_state=42).reset_index(drop=True)
 
 def save_data(df: pd.DataFrame,
               csv_file: str = "saved.csv", 
